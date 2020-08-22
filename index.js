@@ -1,6 +1,9 @@
 $(document).ready(function() {
   var currQuest;
 
+  var $userInput = $('#user-input'),
+      $equation = $('#equation');
+
   var ranNumGen = function (size) {
     return Math.ceil(Math.random() * size);
   };
@@ -17,8 +20,22 @@ $(document).ready(function() {
 
   };
 
-  currQuest = questGen();
-  $('#equation').text(currQuest.equation);
-//console.log(currQuest.equation);
+  var renNewQuest = function () {
+    currQuest = questGen();
+    $equation.text(currQuest.equation);    
+  };
+
+  var checkAnswer = function (userInput, answer) {
+    if (userInput === answer) {
+      renNewQuest();
+      $userInput.val('');
+    }
+  };
+
+  $userInput.on('keyup', function() {
+    checkAnswer(Number($(this).val()), currQuest.answer);
+  });
+
+  renNewQuest();
 
 });
