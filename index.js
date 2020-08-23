@@ -1,5 +1,6 @@
 $(document).ready(function() {
   var currQuest;
+  var timeLeft = 10;
 
   var $userInput = $('#user-input'),
       $equation = $('#equation');
@@ -29,12 +30,26 @@ $(document).ready(function() {
     if (userInput === answer) {
       renNewQuest();
       $userInput.val('');
+      updateTimeLeft(+1);
     }
   };
 
   $userInput.on('keyup', function() {
     checkAnswer(Number($(this).val()), currQuest.answer);
   });
+
+  var updateTimeLeft = function (amount) {
+    timeLeft += amount;
+    $('#time-left').text(timeLeft);
+  };
+
+  var interval = setInterval(function () {
+    updateTimeLeft(-1);
+    if (timeLeft === 0) {
+      clearInterval(interval);
+    }
+    console.log(timeLeft);
+  }, 1000);
 
   renNewQuest();
 
