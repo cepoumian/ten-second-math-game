@@ -1,9 +1,11 @@
 $(document).ready(function() {
   var currQuest;
+  var interval;
   var timeLeft = 10;
 
   var $userInput = $('#user-input'),
-      $equation = $('#equation');
+      $equation = $('#equation'),
+      $timeLeft = $('#time-left');
 
   var ranNumGen = function (size) {
     return Math.ceil(Math.random() * size);
@@ -35,21 +37,29 @@ $(document).ready(function() {
   };
 
   $userInput.on('keyup', function() {
+    startGame();
     checkAnswer(Number($(this).val()), currQuest.answer);
   });
 
   var updateTimeLeft = function (amount) {
     timeLeft += amount;
-    $('#time-left').text(timeLeft);
+    $timeLeft.text(timeLeft);
   };
 
-  var interval = setInterval(function () {
-    updateTimeLeft(-1);
-    if (timeLeft === 0) {
-      clearInterval(interval);
+  var startGame = function () {
+    if (!interval) {
+      if (timeLeft === 0) {
+        updateTimeLeft(10);
+      }
+      interval = setInterval(function () {
+        updateTimeLeft(-1);
+        if (timeLeft === 0) {
+          clearInterval(interval);
+          interval = undefined;
+        }
+      }, 1000);      
     }
-    console.log(timeLeft);
-  }, 1000);
+  };
 
   renNewQuest();
 
