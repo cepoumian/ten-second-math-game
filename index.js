@@ -2,10 +2,12 @@ $(document).ready(function() {
   var currQuest;
   var interval;
   var timeLeft = 10;
+  var score = 0;
 
   var $userInput = $('#user-input'),
       $equation = $('#equation'),
-      $timeLeft = $('#time-left');
+      $timeLeft = $('#time-left'),
+      $score = $('#score');
 
   var ranNumGen = function (size) {
     return Math.ceil(Math.random() * size);
@@ -33,6 +35,7 @@ $(document).ready(function() {
       renNewQuest();
       $userInput.val('');
       updateTimeLeft(+1);
+      updateScore(+1);
     }
   };
 
@@ -46,10 +49,16 @@ $(document).ready(function() {
     $timeLeft.text(timeLeft);
   };
 
+  var updateScore = function (amount) {
+    score += amount;
+    $score.text(score);
+  };
+
   var startGame = function () {
     if (!interval) {
       if (timeLeft === 0) {
         updateTimeLeft(10);
+        updateScore(-score);
       }
       interval = setInterval(function () {
         updateTimeLeft(-1);
