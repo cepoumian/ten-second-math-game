@@ -5,26 +5,46 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>10 Seconds Math Game</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <title>10 Seconds to add 2 numbers</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&display=swap" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link href="index.css" rel="stylesheet" type="text/css" />
   <script src="index.js"></script>
 </head>
 
 <body>
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12">
-        <h2>10 Seconds Math Game</h2>
-        <h3 id="time-left"></h3>
-        <p>second left</p>
-        <h1 id="equation"></h1>
-        <input id="user-input" type="number" />
-        <h4>Score: <span id="score"></span></h4>
+  <div class="container" id="main">
+    <h2 class="text-center" id="title">10 Seconds to Add 2 Numbers</h2>
+    <div class="card card-default text-center" id="board">
+      <div class="card-body">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <h3 id="time-left">10</h3>
+              <p>seconds left</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <h1 id="equation"></h1>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <input id="user-input" type="number" />
+            </div>
+          </div>
+          <div class="row" id="score-row">
+            <div class="col-12">
+              <h4>Score: <span id="score"></span></h4>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+
 </body>
 
 </html>
