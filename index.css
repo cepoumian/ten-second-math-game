@@ -1,0 +1,25 @@
+body {
+  font-family: 'Londrina Solid', cursive;
+  background-color: beige;
+}
+
+#main {
+  margin-top: 40px;
+}
+
+#title {
+  font-size: 48px;
+}
+
+#board {
+  width: 400px;
+  margin: 30px auto;
+  padding: 10px auto;
+  border: none;
+  background-color: whitesmoke;
+  box-shadow: 0 0 10px rgba(96,134,181,.3);
+}
+
+#score-row {
+  margin-top: 15px;;
+}
